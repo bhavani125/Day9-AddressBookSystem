@@ -7,21 +7,27 @@ public class AddressBook {
     //here iam using ArrayList to store
     public static ArrayList<Contacts> contactsArrayList = new ArrayList<>();
     public static Scanner sc = new Scanner(System.in);
-
     //main method
     public static void main(String[] args) {
         boolean options = true;
         while (options) {
-            System.out.println("Enter \n 1)To Add contacts \n 2) To edit contacts\n 3) To Exit");
+            System.out.println("Enter \n 1)To Add contacts \n 2) To edit contacts\n 3)To Delete Contacts\n 4)To Exit");
             System.out.println("Enter the option : ");
             int option = sc.nextInt();
             switch (option) {
                 case 1:
+                    ///calling aadContacts method
                     AddressBook.addContacts();
                     break;
                 case 2:
+                    //calling editContacts method
                     AddressBook.editContacts();
                     break;
+                case 3:
+                    //calling deletingContacts method
+                    AddressBook.deleteContacts();
+                    break;
+
                 default:
                     System.out.println("Invalid Option");
             }
@@ -29,14 +35,15 @@ public class AddressBook {
         }
     }
 
+
     //creating a method for adding contacts
     static void addContacts() {
-        // creating object
-        Contacts person = new Contacts();
-
         //local variable
         int choice = 0;
         while (choice == 0) {
+            // creating object
+            Contacts person = new Contacts();
+
             System.out.println("Enter the firstName");
             person.setFirstName(sc.next());
             System.out.println("Enter the lastName");
@@ -109,4 +116,21 @@ public class AddressBook {
             System.out.println(contactsArrayList.toString());
 
         }
+
+    //creating method for deleting contacts
+    static void deleteContacts() {
+        System.out.println("Enter firstname of the user you want to delete:");
+        String firstName = sc.next();
+
+        for (int i = 0; i < contactsArrayList.size(); i++) {
+            Contacts c = contactsArrayList.get(i);
+            if (c.getFirstName().equals(firstName)) {
+
+                contactsArrayList.remove(c);
+
+            }
+            System.out.println(contactsArrayList);
+        }
     }
+}
+
