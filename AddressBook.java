@@ -64,7 +64,7 @@ public class AddressBook {
             //using toString
             System.out.println(person.toString());
             contactsArrayList.add(person);
-
+            System.out.println(contactsArrayList);
             System.out.println("Enter 1 add to another contact or Enter 0 to exit");
             int number = sc.nextInt();
             if (number == 0) {
